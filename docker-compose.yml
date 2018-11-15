@@ -1,25 +1,36 @@
-version: "3"
+version: '2'
+networks:
+  bridge:
+    driver: bridge
 services:
-  selenium-hub
-    image: selenium/hub
-    container_name: selenium-hub
+  web:
+    image: "xwiki:mysql-tomcat"
+    container_name: xwiki-mysql-tomcat-web
+    depends_on:
+      - db
     ports:
-      - "4444:4444"
-  chrome:
-    image: selenium/node-chrome
-    volumes:
-      - /dev/shm:/dev/shm
-    depends_on:
-      - selenium-hub
+      - "8080:8080"
     environment:
-      - HUB_HOST=selenium-hub
-      - HUB_PORT=4444
-  firefox:
-    image: selenium/node-firefox
+      - DB_USER=xwiki
+      - DB_PASSWORD=xwiki
+      - DB_HOST=xwiki-mysql-db
     volumes:
-      - /dev/shm:/dev/shm
-    depends_on:
-      - selenium-hub
+      - xwiki-data:/usr/local/xwiki
+    networks:
+      - bridge
+  db:
+    image: "mysql:5.7"
+    container_name: xwiki-mysql-db
+    volumes:
+      - ./xwiki.cnf:/etc/mysql/conf.d/xwiki.cnf
+      - mysql-data:/var/lib/mysql
     environment:
-      - HUB_HOST=selenium-hub
-      - HUB_PORT=4444
+      - MYSQL_ROOT_PASSWORD=xwiki
+      - MYSQL_USER=xwiki
+      - MYSQL_PASSWORD=xwiki
+      - MYSQL_DATABASE=xwiki
+    networks:
+      - bridge
+volumes:
+  mysql-data: {}
+  xwiki-data: {}

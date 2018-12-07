@@ -6,6 +6,6 @@ unzip $1 -d Rjcms
 else
    echo "Not Empty"
 docker build -t apachetom .
-docker run -d --name $2 -p  $3 apachetom
+docker run -d --name $2 -p  8080:8080 apachetom
  #! rm -rf Rjcms
 fi

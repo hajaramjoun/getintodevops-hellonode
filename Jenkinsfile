@@ -13,3 +13,4 @@ node {
 
         app = docker.build("hajaramjoun/getintodevops-hellonode")
     }
+}

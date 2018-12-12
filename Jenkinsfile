@@ -19,8 +19,8 @@ node {
          * Run a curl inside the newly-build Docker image */
 
         app.inside {
-            app.run("--name mobile-deposit-api -p 7080:8080") 
-            sh 'curl http://localhost:7080 || exit 1'
+           container = app.run("--name hajar -p 7080:8080") 
+            //sh 'curl http://localhost:7080 || exit 1'
         }
     }
 }

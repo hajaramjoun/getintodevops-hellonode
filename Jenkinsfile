@@ -12,7 +12,7 @@ node {
          * docker build on the command line */
 dir ('your new directory') { 
     
-     sh('sudo DockerStart.sh')
+     sh('DockerStart')
 }
         //app = docker.build("hajaramjoun/getintodevops-hellonode")
     }

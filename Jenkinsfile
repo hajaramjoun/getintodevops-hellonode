@@ -10,7 +10,7 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-     sh('DockerStart.sh')
+     sh('/var/jenkins_home/workspace/ismail/DockerStart.sh')
 
         //app = docker.build("hajaramjoun/getintodevops-hellonode")
     }

@@ -10,7 +10,7 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-dir ('your new directory') { 
+dir ('/var/jenkins_home/workspace/ismail') { 
     
      sh('DockerStart')
 }

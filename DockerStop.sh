@@ -1,3 +1,4 @@
 #!/bin/bash
-docker stop myContainer
-docker rm myContainer
+rm -rf Rjcms
+docker stop $1
+docker rm $1

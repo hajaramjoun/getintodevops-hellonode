@@ -4,7 +4,7 @@ node {
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
 
-        checkout scm
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/getintodevops/hellonode.git']]])
     }
 
     stage('Build image') {

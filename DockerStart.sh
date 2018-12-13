@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#[ ! -d Rjcms ] && mkdir -p Rjcms
-#unzip $1 -d Rjcms
+[ ! -d Rjcms ] && mkdir -p Rjcms
+unzip $1 -d Rjcms
 
  if [ -z "$(ls -A Rjcms)" ]; then
    echo "Empty"
